@@ -1,0 +1,38 @@
+# @package data
+
+_target_: src.data.multilingual_dataset.MultilingualASRDataset
+
+data_dir: data
+meta_file: meta.csv
+audio_dir: wav
+
+# Audio preprocessing
+sample_rate: 16000
+max_duration: 30.0
+min_duration: 0.5
+
+# Data augmentation
+augmentation:
+  enabled: true
+  speed_perturbation:
+    enabled: true
+    min_speed: 0.9
+    max_speed: 1.1
+  noise_injection:
+    enabled: true
+    noise_factor: 0.01
+  time_stretch:
+    enabled: true
+    min_stretch: 0.9
+    max_stretch: 1.1
+
+# Data splits
+train_split: 0.8
+val_split: 0.1
+test_split: 0.1
+split_by: speaker  # speaker, recording, random
+
+# Batch processing
+batch_size: 8
+num_workers: 4
+pin_memory: true

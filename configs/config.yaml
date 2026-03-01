@@ -1,0 +1,61 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - model: whisper_base
+  - data: multilingual
+  - training: default
+  - evaluation: default
+
+# Experiment configuration
+experiment_name: multilingual_asr_demo
+seed: 42
+device: auto  # auto, cpu, cuda, mps
+
+# Paths
+data_dir: data
+output_dir: outputs
+checkpoint_dir: checkpoints
+assets_dir: assets
+
+# Logging
+log_level: INFO
+log_file: logs/experiment.log
+
+# Privacy and ethics
+privacy_mode: true  # Enable privacy-preserving features
+deidentify_filenames: true
+log_pii: false
+
+# Model settings
+model_name: whisper
+max_audio_length: 30.0  # seconds
+sample_rate: 16000
+
+# Supported languages
+supported_languages:
+  - en-US
+  - es-ES
+  - fr-FR
+  - de-DE
+  - zh-CN
+  - ja-JP
+  - ko-KR
+  - ar-SA
+  - hi-IN
+  - pt-BR
+
+# Evaluation metrics
+metrics:
+  - wer
+  - cer
+  - token_accuracy
+  - latency
+  - rtf
+
+# Demo settings
+demo:
+  max_file_size_mb: 50
+  supported_formats: [wav, mp3, flac, m4a]
+  enable_recording: true
+  max_recording_duration: 30
